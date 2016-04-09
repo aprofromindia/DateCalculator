@@ -13,7 +13,7 @@ enum InputError : ErrorType{
 }
 
 // regex for date range 01.01.1901 to 31.12.2999
-let inputRegex = "^([0-2][1-9]|3[01])\\/(0[1-9]|1[0-2])\\/(19\\d{2}|2\\d{3})$"
+let dateRegex = "^([0-2][1-9]|3[01])\\/(0[1-9]|1[0-2])\\/(19\\d{2}|2\\d{3})$"
 
 func dateCalc(date: String, secondDate: String) throws -> Int {
     do{
@@ -34,7 +34,7 @@ func extractDate(date: String) throws -> (day: Int, month: Int, year: Int) {
     
     do{
         
-        let regex = try NSRegularExpression(pattern: inputRegex, options: [])
+        let regex = try NSRegularExpression(pattern: dateRegex, options: [])
         let results = regex.matchesInString(date, options: [], range: NSRange(location: 0, length: date.characters.count))
         
         guard let result = results.first else{
@@ -70,24 +70,9 @@ guard let a = a, b = b else{
     print("Invalid date format")
     exit(-1)
 }
+
 do {
-    try print("\(dateCalc(a, secondDate: b)) days")
+    try print("\(dateCalc(a, secondDate: b)) days.")
 } catch{
     print(error)
 }
-
-//// MARK: - Test code
-//
-//let d1 = "02/06/1983", d2 = "22/06/1983"
-//do {
-//    assert(try dateCalc(d1, secondDate: d2) == 19, "")
-//    
-//    let d3 = "04/07/1984", d4 = "25/12/1984"
-//    assert(try dateCalc(d3, secondDate: d4) == 173, "")
-//    
-//    let d5 = "03/01/1989", d6 = "03/08/1983"
-//    assert(try dateCalc(d5, secondDate: d6) == 1979, "")
-//    
-//} catch {
-//    print("Test failed")
-//}
