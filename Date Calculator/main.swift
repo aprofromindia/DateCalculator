@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum InputError : ErrorType{
+enum InputError : ErrorType {
     case InvalidInput
 }
 
@@ -21,7 +21,7 @@ func dateCalc(date: String, secondDate: String) throws -> Int {
             julianDay(day: extDate2.day, month: extDate2.month, year: extDate2.year))
         
         return max(0, numDays - 1)
-    } catch{
+    } catch {
         throw error
     }
 }
@@ -47,7 +47,7 @@ func extractDate(date: String) throws -> (day: Int, month: Int, year: Int) {
         }
         return (extDate[0], extDate[1], extDate[2])
         
-    }catch{
+    }catch {
         throw error
     }
 }
@@ -73,6 +73,6 @@ guard let a = a, b = b else{
 
 do {
     try print("\(dateCalc(a, secondDate: b)) days.")
-} catch{
+} catch {
     print(error)
 }
