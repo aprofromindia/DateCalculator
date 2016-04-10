@@ -21,4 +21,15 @@ class Date_Calculator_Test: XCTestCase {
         let d5 = "03/01/1989", d6 = "03/08/1983"
         XCTAssert(try dateCalc(d5, secondDate: d6) == 1979)
     }
+    
+    func testInvalidInput() {
+        let d1 = "", d2 = ""
+        XCTAssertThrowsError(try dateCalc(d1, secondDate: d2))
+        
+        let d3 = "04/07/1984", d4 = "apple"
+        XCTAssertThrowsError(try dateCalc(d3, secondDate: d4))
+        
+        let d5 = "boy", d6 = "03/08/1983"
+        XCTAssertThrowsError(try dateCalc(d5, secondDate: d6))
+    }
 }
