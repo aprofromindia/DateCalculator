@@ -13,7 +13,7 @@ enum InputError : ErrorType{
 }
 
 // regex for date range 01.01.1901 to 31.12.2999
-let dateRegex = "^([0-2][1-9]|3[01])\\/(0[1-9]|1[0-2])\\/(19\\d{2}|2\\d{3})$"
+let dateRegex = "^([0-2][1-9]|3[01])\\/(0[1-9]|1[0-2])\\/(19(?:[0-9]){2}|2(?:[0-9]){3})$"
 
 func dateCalc(date: String, secondDate: String) throws -> Int {
     do{
